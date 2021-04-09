@@ -20,7 +20,7 @@ posts = [
 ]
 
 # {{ url_for('static', filename='js/scripts.js') }}pi
-@application.route('/')
+@application.route('/movie')
 def hello_world():
     return '<div  style="Background-color: Green"><h1> Hello, World! </h1> </div>'
 
@@ -33,10 +33,12 @@ def new():
 def home():
     return render_template('index.html')
 
-@application.route('/movie')
+@application.route('/')
 def movie():
-    number = random.randint(0, 2)
-    num    = random.randint(0, 2)
+    number = random.randint(0, 11)
+    num    = 2
+    if number < 4:
+        num = 0
     quote  = quotee[number]
     tit    = movie_list[num]
     return render_template('movie.html', line = quote, title = tit)
